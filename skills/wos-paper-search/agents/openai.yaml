@@ -1,0 +1,4 @@
+interface:
+  display_name: "WOSCC 论文检索"
+  short_description: "检索 WOSCC 论文、被引信息并总结最新研究进展"
+  default_prompt: "Use $wos-paper-search to search WOSCC for papers relevant to my research question and summarize the evidence."
