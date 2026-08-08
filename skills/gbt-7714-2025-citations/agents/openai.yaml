@@ -1,0 +1,4 @@
+interface:
+  display_name: "GB/T 7714—2025 引用规范"
+  short_description: "依据国家标准检查、更正并转换论文正文引用与参考文献表格式"
+  default_prompt: "使用 $gbt-7714-2025-citations 检查并更正这段文本中的正文引用与参考文献表，逐项说明依据。"
