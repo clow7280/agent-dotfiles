@@ -82,24 +82,9 @@ class QueryError(RuntimeError):
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="查询 easyScholar 期刊等级，并可从 Zotero 本地 API 读取期刊名。"
-    )
+    parser = argparse.ArgumentParser(description="查询 easyScholar 期刊等级。")
     parser.add_argument("publication_names", nargs="*", metavar="期刊名")
     parser.add_argument("--stdin", action="store_true", help="从标准输入逐行读取期刊名")
-    parser.add_argument(
-        "--zotero", action="store_true", help="从 Zotero 最近顶层条目提取 publicationTitle"
-    )
-    parser.add_argument(
-        "--zotero-limit",
-        type=int,
-        default=50,
-        metavar="N",
-        help="检查的 Zotero 最近条目数（默认：50，最大：100）",
-    )
-    parser.add_argument(
-        "--zotero-port", type=int, default=23119, help="Zotero 本地 API 端口（默认：23119）"
-    )
     parser.add_argument(
         "--scope",
         choices=("all", "selected"),
@@ -130,14 +115,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     args = parser.parse_args(argv)
 
-    if not (1 <= args.zotero_limit <= 100):
-        parser.error("--zotero-limit 必须在 1 到 100 之间")
-    if not (1 <= args.zotero_port <= 65535):
-        parser.error("--zotero-port 必须在 1 到 65535 之间")
     if not (1 <= args.timeout <= 120):
         parser.error("--timeout 必须在 1 到 120 秒之间")
-    if not (args.publication_names or args.stdin or args.zotero):
-        parser.error("请提供至少一个期刊名，或使用 --stdin / --zotero")
+    if not (args.publication_names or args.stdin):
+        parser.error("请提供至少一个期刊名，或使用 --stdin")
     return args
 
 
@@ -165,46 +146,6 @@ def deduplicate(values: Iterable[str]) -> list[str]:
             seen.add(normalized.casefold())
             result.append(normalized)
     return result
-
-
-def fetch_zotero_publication_names(limit: int, port: int, timeout: float) -> list[str]:
-    query = urllib.parse.urlencode(
-        {
-            "limit": limit,
-            "sort": "dateModified",
-            "direction": "desc",
-            "format": "json",
-            "include": "data",
-        }
-    )
-    url = f"http://127.0.0.1:{port}/api/users/0/items/top?{query}"
-    request = urllib.request.Request(url, headers={"Zotero-API-Version": "3"})
-    try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            payload = json.load(response)
-    except urllib.error.HTTPError as exc:
-        raise QueryError(f"Zotero 本地 API 返回 HTTP {exc.code}") from None
-    except (urllib.error.URLError, TimeoutError, OSError) as exc:
-        reason = getattr(exc, "reason", exc)
-        raise QueryError(
-            f"无法连接 Zotero 本地 API（127.0.0.1:{port}）：{reason}"
-        ) from None
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        raise QueryError("Zotero 本地 API 返回了无法解析的 JSON") from None
-
-    if not isinstance(payload, list):
-        raise QueryError("Zotero 本地 API 返回结构异常：顶层不是数组")
-    names: list[str] = []
-    for item in payload:
-        if not isinstance(item, dict):
-            continue
-        data = item.get("data", item)
-        if not isinstance(data, dict):
-            continue
-        title = data.get("publicationTitle")
-        if isinstance(title, str) and title.strip():
-            names.append(title)
-    return deduplicate(names)
 
 
 def request_rank(publication_name: str, secret: str, timeout: float) -> dict[str, Any]:
@@ -402,12 +343,6 @@ def main(argv: list[str] | None = None) -> int:
         names = list(args.publication_names)
         if args.stdin:
             names.extend(line.strip() for line in sys.stdin)
-        if args.zotero:
-            names.extend(
-                fetch_zotero_publication_names(
-                    args.zotero_limit, args.zotero_port, args.timeout
-                )
-            )
         names = deduplicate(names)
         if not names:
             raise QueryError("没有取得可查询的期刊名")

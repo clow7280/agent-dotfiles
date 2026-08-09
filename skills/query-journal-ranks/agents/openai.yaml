@@ -1,4 +1,4 @@
 interface:
   display_name: "期刊等级与分区查询"
-  short_description: "通过 easyScholar 查询期刊等级、SCI/SSCI 与中科院分区"
-  default_prompt: "使用 $query-journal-ranks 查询这些期刊的 SCI/SSCI、中科院分区和其他等级。"
+  short_description: "通过 easyScholar 查询期刊等级、SCI、SSCI 与中科院分区"
+  default_prompt: "使用 $query-journal-ranks 查询这些期刊的 SCI、SSCI、中科院分区和其他等级。"
