@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zotero Local API"
+  short_description: "通过本地 API 读取 Zotero 文献库并导出书目"
+  default_prompt: "使用 $zotero-local-api 从本地运行的 Zotero 读取文献数据或导出书目。"

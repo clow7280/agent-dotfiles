@@ -1,4 +1,0 @@
-interface:
-  display_name: "Zotero Local CLI"
-  short_description: "Query and export a local Zotero library safely"
-  default_prompt: "Use $zotero-local-cli to inspect my running Zotero library with tested read-only commands and structured JSON output."
