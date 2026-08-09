@@ -13,7 +13,7 @@
 让脚本通过 TSV 的 `WE` 列执行后过滤。规范化以下别名：
 
 | 用户输入 | `WE` 中的规范代码 |
-|---|---|
+| --- | --- |
 | SCI、SCIE、SCI-E | `SCI-EXPANDED` |
 | ESCI | `ESCI` |
 | SSCI | `SSCI` |
@@ -36,7 +36,7 @@
 ## 常用高级检索字段
 
 | 标签 | 含义 | 示例 |
-|---|---|---|
+| --- | --- | --- |
 | `TS` | 主题：题名、摘要、作者关键词、Keywords Plus | `TS=("ship trajectory" AND "deep learning")` |
 | `TI` | 题名 | `TI=("attention is all you need")` |
 | `AB` | 摘要 | `AB=(electrolyte*)` |
