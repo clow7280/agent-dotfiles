@@ -10,7 +10,7 @@ pi 没有原生 MCP 支持，对应机制是 npm extension，通过 `pi install`
 | server          | Claude Code | Codex         | pi   |
 |:----------------|:------------|:--------------|:-----|
 | chrome-devtools | plugin 提供 | `config.toml` | 无   |
-| ask-claude      | 无          | personal 市场 | 扩展 |
+| ask-claude      | 无          | 无            | 扩展 |
 
 ## 维护约定
 
