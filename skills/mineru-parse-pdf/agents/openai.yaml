@@ -1,0 +1,4 @@
+interface:
+  display_name: "MinerU PDF 转 Markdown"
+  short_description: "使用 MinerU 精准 API 生成 Markdown ZIP 交付包"
+  default_prompt: "使用 $mineru-parse-pdf 将我的 PDF 解析为带可选插图的 Markdown ZIP 交付包。"
