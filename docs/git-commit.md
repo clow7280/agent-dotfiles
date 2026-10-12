@@ -1,7 +1,6 @@
 # Git 提交规范
 
 提交信息遵循基于 Conventional Commits v1.0.0 修改的以下规范，未明确的部分按原规范执行。
-除非用户明确要求，不执行 `git commit` 与 `git push` 操作。
 
 ## 标题格式
 
