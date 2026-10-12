@@ -53,7 +53,7 @@ description: 按 GB/T 7714—2025 检查、更正、重排和转换论文、报�
 python3 <SKILL_DIR>/scripts/gbt7714_lint.py INPUT --system auto
 ```
 
-`<SKILL_DIR>` 指当前 `SKILL.md` 所在目录的绝对路径，不要假定 shell 当前目录就是技能目录；本机安装位置为 `/Users/clow/.agents/skills/gbt-7714-2025-citations`。
+`<SKILL_DIR>` 指当前加载的 `SKILL.md` 所在目录的绝对路径，不要假定 shell 当前目录就是技能目录，也不要写死安装路径。
 用 `--format json` 获取机器可读结果，用 `-` 从标准输入读取。
 `--standardization-document` 用于确认输入本身是标准化文件，从而接受标准条目省略 `[S]`；`--web-context` 用于确认正在按 8.11 审查网站或网页形态。
 该脚本只报告可由文本确定或提示人工复核的结构问题，不能替代语义审校，也不会自动改写原文。

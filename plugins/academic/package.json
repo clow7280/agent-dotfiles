@@ -1,0 +1,11 @@
+{
+  "name": "academic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "供 Codex 与 pi 共用的个人学术研究技能包。",
+  "keywords": ["pi-package", "academic", "research"],
+  "files": [".codex-plugin", "skills", "README.md"],
+  "pi": {
+    "skills": ["./skills"]
+  }
+}
