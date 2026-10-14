@@ -8,3 +8,6 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+
+# 各机器特有的规则，不在机器间共用
+LOCAL.md

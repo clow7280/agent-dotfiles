@@ -2,6 +2,9 @@
 
 规范之间存在冲突，或遇到规则未覆盖且会影响结果的方向与决策时，先暂停与用户讨论，不自行裁量。
 
+本规范在多台机器间共用，各机器特有的规则写在本机的 `~/.agents/LOCAL.md` 中，该文件不进入仓库。
+`LOCAL.md` 存在时必须先读取，其中的规则优先于本文件。
+
 ## 用户习惯
 
 - 除非用户明确要求，所有面向用户的文本都使用简体中文
@@ -44,5 +47,5 @@
 
 在涉及相关任务时**必须**先查阅下列文档后再执行：
 
-- Markdown 文档写作：/Users/clow/.agents/docs/markdown-writing.md
-- Git 提交：/Users/clow/.agents/docs/git-commit.md
+- Markdown 文档写作：~/.agents/docs/markdown-writing.md
+- Git 提交：~/.agents/docs/git-commit.md
