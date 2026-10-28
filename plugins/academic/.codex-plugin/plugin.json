@@ -1,15 +1,15 @@
 {
   "name": "academic",
   "version": "0.1.0",
-  "description": "学术研究技能包，涵盖论文检索、期刊分区、文献库读取、PDF 解析与国标引用。",
+  "description": "学术研究技能包，涵盖论文检索、期刊分区、文献库读取、PDF 解析、国标引用与中文学术写作。",
   "author": {
     "name": "clow"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "学术研究",
-    "shortDescription": "论文检索、期刊分区、Zotero、PDF 解析与国标引用",
-    "longDescription": "在研究项目中按需启用的个人技能包，包含 WoS 检索、easyScholar 期刊分区、Zotero 本地文献库读取、MinerU PDF 解析与 GB/T 7714—2025 引用审校。Codex 与 pi 共用同一份技能文件。",
+    "shortDescription": "论文检索、期刊分区、Zotero、PDF 解析、国标引用与学术写作",
+    "longDescription": "在研究项目中按需启用的个人技能包，包含 WoS 检索、easyScholar 期刊分区、Zotero 本地文献库读取、MinerU PDF 解析、GB/T 7714—2025 引用审校与中文学术写作。Codex 与 pi 共用同一份技能文件。",
     "developerName": "clow",
     "category": "Productivity",
     "capabilities": [],

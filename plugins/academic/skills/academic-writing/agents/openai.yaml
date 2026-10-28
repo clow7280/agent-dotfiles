@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文学术写作"
+  short_description: "起草和修改中文学术文本，去除大语言模型常见的写作痕迹"
+  default_prompt: "使用 $academic-writing 修改这段论文正文，并附上改动说明。"
