@@ -1,6 +1,6 @@
 # 学术研究技能包
 
-本包将 6 个学术技能集中维护，Codex 与 pi 共用包内的 `skills/` 目录，并分别通过各自配置按项目启用。
+本包将 6 个学术技能集中维护，Codex、pi 与 Claude Code 共用包内的 `skills/` 目录，并分别通过各自配置按项目启用。
 源文件位于 `~/.agents/plugins/academic/`，不再放入全局自动发现的 `~/.agents/skills/`。
 以下依次说明技能范围、启用方式和运行依赖。
 
@@ -53,6 +53,26 @@ pi remove -l ~/.agents/plugins/academic
 
 不要再次把包内技能链接到全局 `~/.agents/skills/`，否则会恢复全局发现。
 pi 的项目安装与本地包行为见 [pi 包文档](https://pi.dev/docs/latest/packages)。
+
+## Claude Code 按项目启用
+
+Claude Code 通过 `.claude-plugin/plugin.json` 识别本包。
+`~/.claude/skills/academic` 软链接到本目录，Claude Code 将其作为 `academic@skills-dir` 插件加载，直接引用源文件，修改后在新会话中生效。
+`~/.claude/settings.json` 中设置了默认禁用：
+
+```json
+"enabledPlugins": {
+  "academic@skills-dir": false
+}
+```
+
+在研究项目目录中执行以下命令，在项目的 `.claude/settings.json` 中启用；只在本机启用时将 `-s project` 换为 `-s local`：
+
+```sh
+claude plugin enable academic@skills-dir -s project
+```
+
+项目级设置覆盖用户级设置，启用后技能名带插件前缀，例如 `academic:wos-paper-search`。
 
 ## 运行依赖
 

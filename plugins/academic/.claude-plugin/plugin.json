@@ -1,0 +1,8 @@
+{
+  "name": "academic",
+  "version": "0.1.0",
+  "description": "学术研究技能包，涵盖论文检索、期刊分区、文献库读取、PDF 解析、国标引用与理工科中文学术写作。",
+  "author": {
+    "name": "clow"
+  }
+}
