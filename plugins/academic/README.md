@@ -11,7 +11,7 @@
 - `zotero-local-api`：读取本地 Zotero 文献库并导出书目
 - `mineru-parse-pdf`：通过 MinerU 将 PDF 解析为 Markdown 交付包
 - `gbt-7714-2025-citations`：按 GB/T 7714—2025 审校和转换引用格式
-- `academic-writing`：起草和修改中文学术文本，去除大语言模型常见的写作痕迹
+- `academic-writing`：起草和修改理工科中文学术文本，去除大语言模型常见的写作痕迹
 
 每个技能保留自己的触发条件、操作边界、脚本和参考资料。
 启用整个包后，代理仍按具体任务选择技能，不会因加载学术包而自动执行检索、读取文献库或上传 PDF。
