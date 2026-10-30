@@ -16,7 +16,6 @@ from typing import Any, Iterable
 
 
 API_URL = "https://www.easyscholar.cc/open/getPublicationRank"
-BUNDLED_SECRET_KEY = "a82bf1d77a2f4a8b9c86971b3722f480"
 MIN_REQUEST_INTERVAL = 0.55
 DEFAULT_TIMEOUT = 20.0
 
@@ -129,10 +128,10 @@ def load_secret(secret_key_file: Path | None) -> str:
         except (OSError, IndexError) as exc:
             raise QueryError(f"无法从密钥文件读取首行：{exc}") from None
     else:
-        secret = os.environ.get("EASYSCHOLAR_SECRET_KEY", BUNDLED_SECRET_KEY).strip()
+        secret = os.environ.get("EASYSCHOLAR_SECRET_KEY", "").strip()
     if not secret:
         raise QueryError(
-            "未找到可用密钥；请检查内置配置、EASYSCHOLAR_SECRET_KEY 或 --secret-key-file。"
+            "未找到可用密钥；请设置 EASYSCHOLAR_SECRET_KEY 或使用 --secret-key-file。"
         )
     return secret
 

@@ -11,8 +11,8 @@ description: 通过 easyScholar 开放 API 查询并解释期刊等级、SCI 与
 ## 工作流
 
 1. 确定期刊名，优先使用期刊官网名称或用户给出的完整刊名，不要把论文题名当作期刊名
-2. 使用脚本内置的个人 easyScholar SecretKey，无需额外配置
-3. 需要临时切换账户时，用环境变量 `EASYSCHOLAR_SECRET_KEY` 或 `--secret-key-file` 指定的单行密钥文件覆盖内置值
+2. 脚本从环境变量 `EASYSCHOLAR_SECRET_KEY` 读取 easyScholar SecretKey；未设置时提示用户自行配置，不在对话中索要或展示密钥
+3. 需要临时切换账户时，用 `--secret-key-file` 指定单行密钥文件，其优先级高于环境变量
 4. 运行 `scripts/query_journal_ranks.py`，脚本固定使用 HTTPS，并将请求起始间隔限制为至少 0.55 秒
 5. 按查询时间报告结果，不自行补充 API 未返回的年份、版本或收录状态
 6. 把“无返回等级”表述为“easyScholar 当前未返回匹配等级”，不得据此断言期刊未被某数据库收录

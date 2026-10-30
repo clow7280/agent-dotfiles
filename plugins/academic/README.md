@@ -81,6 +81,5 @@ WoS 检索需要具备订阅授权的机构网络、校园网或机构 VPN，并
 Zotero 需要桌面客户端运行并启用 Local API。
 MinerU 需要 poppler 提供 PDF 探查工具，并从 `MINERU_API_KEY` 或 `MINERU_TOKEN` 读取凭据。
 
-easyScholar 脚本保留原有个人密钥配置，也支持通过 `EASYSCHOLAR_SECRET_KEY` 或密钥文件覆盖。
-因此本包用于个人本地使用，`package.json` 已设置 `private: true`；如需对外分享，应先移除脚本中的个人密钥。
+easyScholar 脚本从 `EASYSCHOLAR_SECRET_KEY` 或 `--secret-key-file` 指定的密钥文件读取 SecretKey。
 打包本身不会连接上述服务，也不会验证账号授权或消耗解析额度。
